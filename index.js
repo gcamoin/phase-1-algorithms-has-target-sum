@@ -1,17 +1,42 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const seenNumbers = {};
+  for (let i = 0; i < array.length; i++) {
+    const complement = target - array[i];
+    if (seenNumbers[complement]) return true;
+    seenNumbers[array[i]] = true;  
+  }
+  return false;
 }
 
+
+
+// function hasTargetSum(array, target) {
+//   for (let i = 0; i < array.length; i++) {
+//     const complement = target - array[i]
+//     for (let j = i + 1; j < array.length; j++) {
+//       if (array[j] === complement) return true;
+//     }
+//   }
+//   return false}
+
 /* 
-  Write the Big O time complexity of your function here
+  Time complexity: O(n^2)
+  Space Compexity: O(n)
 */
 
 /* 
-  Add your pseudocode here
+Initialize empty array called hasTargetSum
+For each number in the array, subtract it from target sum and see if the resulting number is in the array
+If the sum of the 2 elements is equal to the target sum; return true
+Otherwise return false
 */
 
 /*
-  Add written explanation of your solution here
+  We start by creating a constant called seenNumbers and set it equal to an empty object
+  As we are iterating over the array, the numbers that we have already iterated over will be passed into the object
+  We then create a variable called complement which is equal to the targetSum - array[i]
+  If one of the seenNumbers is equal to one of the complements, the function will return true
+  Otherwise it will return false
 */
 
 // You can run `node index.js` to view these console logs
